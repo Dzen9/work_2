@@ -1,0 +1,27 @@
+"use strict";
+
+// *************************************
+// to set name to english abriviation
+// ResultPanePlaceHolder_caption_textContainer
+var nameOfDiv = document.getElementById(
+  "ResultPanePlaceHolder_caption_textContainer"
+);
+if (
+  nameOfDiv != 0 &&
+  nameOfDiv.textContent.includes("новый почтовый контакт")
+) {
+  // to get full name for fields
+  var sFullMail = prompt("Please enter mail of user", "gd@expressfactoring.ru");
+
+  document.getElementById(
+    "ResultPanePlaceHolder_NewMailContactWizard_NameAccountSection_contentContainer_ctl00_tbxFirstName"
+  ).value = sFullMail;
+
+  document.getElementById(
+    "ResultPanePlaceHolder_NewMailContactWizard_NameAccountSection_contentContainer_tbxAlias"
+  ).value = "to_" + sFullMail.replace("@", "");
+  document.getElementById(
+    "ResultPanePlaceHolder_NewMailContactWizard_NameAccountSection_contentContainer_tbxExternalEmail"
+  ).value = sFullMail;
+}
+// *************************************
