@@ -88,9 +88,17 @@ function transliterate(word) {
 String.prototype.capitalize = function () {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
+// to get full name for fields
+var sFullName = prompt(
+  "Please enter full name",
+  "Агаджанян Марина Анатольевна"
+);
+
+// to create password
+var password = Math.random().toString(36).slice(-8);
+console.log("Password:\t" + password);
 
 // there in text must be ful name of this type агаДжанян марина АНатольевна
-let sFullName = document.getElementById("old").value;
 let arr = sFullName.toLocaleLowerCase().split(" ");
 var rightArr = [];
 
@@ -102,28 +110,40 @@ arr.forEach((element) => {
 // arr[0] - name
 // arr[1] - sername
 // arr[3] - familia
+let abrivRus = arr[0] + "_" + arr[1].charAt(0);
 if (arr.length == 3) {
-  let abrivRus = arr[0] + "_" + arr[1].charAt(0);
   abrivRus += arr[2].charAt(0);
-  // name
-  var name = rightArr[0];
-  // sername
-  var surname = rightArr[1];
-  // result abrivEng
-  var abrivEng = transliterate(abrivRus);
-  // get Inicials
+}
+// name
+var name = rightArr[1];
+console.log("Name:\t" + name);
+// sername
+var surname = rightArr[0];
+console.log("Surname:\t" + surname);
+// result abrivEng
+var abrivEng = transliterate(abrivRus);
+console.log("Abreviation eng:\t" + abrivEng);
+
+// get Inicials
+if (arr.length == 3) {
   var inic =
     (rightArr[1].charAt(0) + "." + rightArr[2].charAt(0)).toLocaleUpperCase() +
     ".";
-  var nameAndFio = rightArr[1] + " " + rightArr[0];
   // string Агаджанян Марина Анатольевна
   var rightFullName = rightArr[0] + " " + rightArr[1] + " " + rightArr[2];
+} else if (arr.length == 2) {
+  var inic = rightArr[1].charAt(0) + ".";
+  // string Агаджанян Марина Анатольевна
+  var rightFullName = rightArr[0] + " " + rightArr[1];
 }
 
-// to create password
-var password = Math.random().toString(36).slice(-8);
-// Агаджанян Марина Анатольевна	https://agents.goodfin.ru:843/	crmgoodfinru\agadzhanyan_ma	bgkzu078	agadzhanyan_ma@crm.goodfin.ru
+console.log("Inicials:\t" + inic);
+console.log("Right full name:\t" + rightFullName);
 
+var nameAndFio = rightArr[1] + " " + rightArr[0];
+console.log("Name and fio:\t" + nameAndFio);
+
+// Агаджанян Марина Анатольевна	https://agents.goodfin.ru:843/	crmgoodfinru\agadzhanyan_ma	bgkzu078	agadzhanyan_ma@crm.goodfin.ru
 var textForExcel =
   rightFullName +
   "	https://agents.goodfin.ru:843/	crmgoodfinru\\" +
@@ -132,8 +152,11 @@ var textForExcel =
   password +
   "	" +
   abrivEng +
-  "@crm.goodfin.ru	";
+  "@crm.goodfin.ru	" +
+  "!!!@mail!!!";
 
-console.log(textForExcel);
+console.log("Text for EXCEL:\t" + textForExcel);
+
+var person = prompt("Please copy the excel line", textForExcel);
 
 // *************************************
