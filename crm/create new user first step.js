@@ -140,7 +140,7 @@ if (
   var password = Password.generate(15);
 
   // there in text must be ful name of this type агаДжанян марина АНатольевна
-  let arr = sFullName.toLocaleLowerCase().split(" ");
+  let arr = sFullName.toLowerCase().split(" ");
   var rightArr = [];
 
   // make first letter each word capitalize
