@@ -9,7 +9,7 @@ var setTo = document.getElementsByClassName(
 )[0];
 setTo.appendChild(btn);
 function fnFindOKPD() {
-  let open = "https://yandex.ru/search/?lr=10668&text=";
+  let open = "https://psb.itfinance.io/admin/ebb/tenders/?q=";
   let str = "";
   if (window.getSelection().baseNode == undefined) {
     str = "";
