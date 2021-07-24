@@ -1,4 +1,5 @@
-var btn = document.createElement("LABEL"); // Create a <label> element
+
+var btn = document.createElement("LABEL"); // Create a <button> element
 btn.innerHTML = "SET MAIN VALUE"; // Insert text
 btn.addEventListener("click", fnSetTopic);
 // document.body.appendChild(btn); // Append <button> to <body>
@@ -83,3 +84,18 @@ issue_tracker_id - Трекер
   document.getElementById("issue_assigned_to_id").value = value;
   // ***************************************************************************
 }
+
+// add marina and pavel to task
+document.querySelector('.icon-add-bullet').click();
+
+//set deley about wait form to add them to watchers
+setTimeout(function () {
+  var inputs = document.getElementsByName('watcher[user_ids][]');
+  inputs.forEach(element => {
+    if (element.value === '355' || element.value === '237') {
+      element.checked = true;
+    }
+  });
+
+  document.querySelector('p.buttons input').click();
+}, 500);
